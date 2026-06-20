@@ -1,5 +1,7 @@
 const express = require("express");
+
 const app = express();
+
 const quotes = [
 	"Success comes from consistency.",
 	"Small progress is still progress.",
@@ -7,12 +9,27 @@ const quotes = [
 	"Keep learning everyday.",
 	"Action creates results.",
 ];
+
 app.get("/", (req, res) => {
 	const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
+
 	res.json({
 		quote: randomQuote,
 	});
 });
+
+app.get("/about", (req, res) => {
+	res.json({
+		project: "Motivation API",
+		author: "Soumyajit Dutta",
+	});
+});
+app.get("/health", (req, res) => {
+	res.json({
+		status: "UP",
+	});
+});
+
 app.listen(3000, () => {
 	console.log("Server running on port 3000");
 });
